@@ -20,17 +20,10 @@ public class MainActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		/*String [] values = new String[] { "Device", "Géo localisation",
-				"Accéléromètre", "Internet",  "Dialogues", "Album photos",
-				"Connexion réseau", "Gestion des fichiers", "Carnet de contacts"
-		};*/
-		
+
+		// fixe l'adaptateur
 		setListAdapter(new MonAdaptateur(this));
 
-		ListView v = getListView();
-		//v.setOnItemClickListener( new );
-		
 	}
 
 	class MonAdaptateur extends BaseAdapter {
@@ -79,7 +72,7 @@ public class MainActivity extends ListActivity {
 			Log.v("ltm", "position = " + position + ", convertView = " + convertView);
 			
 			// 1. Déplie mon Layout qui réprésente une ligne
-			View rowView = null;
+			View rowView;
 			
 			//if(convertView==null){
 				LayoutInflater inflater = (LayoutInflater)_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -90,7 +83,7 @@ public class MainActivity extends ListActivity {
 				imageView.setImageResource(_tab_images[position]);
 				textView.setText(values[position]);
 
-			//Log.v("ltm", "position = " + position);
+			Log.v("ltm", "position = " + position);
 			//}else
 				//rowView = (View)convertView;
 			
@@ -98,13 +91,10 @@ public class MainActivity extends ListActivity {
 		}
 
 		public MonAdaptateur(Context context) {//, String [] v) {
-			//, R.layout.row_layout, v);
 			_context = context;
-			//_values = v;
 		}
 		
 		private Context _context;
-		//private String [] _values;
 	}
 
 	@Override
